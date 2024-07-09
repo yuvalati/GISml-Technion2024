@@ -2,7 +2,7 @@
 
 yalla hapoel!!!
 yalla Netanya !!!
-
+yalla haifa !!!
 Please add the project suggestions here!
 
 Are you ready? ⭐️
