@@ -1,8 +1,9 @@
 # GISml-Technion2024
 
-yalla hapoel!!!
-yalla Netanya !!!
+Project Summary:
 
-Please add the project suggestions here!
+Fake News Detection with Geographical Context
 
-Are you ready? ⭐️
+Objective:
+
+Develop a model to detect fake news, incorporating geographical data to enhance detection accuracy.
