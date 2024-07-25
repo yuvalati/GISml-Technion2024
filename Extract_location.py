@@ -10,27 +10,40 @@ dataset_path = "Combined.csv"
 df_test = pd.read_csv(dataset_path)
 
 # Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_trf")
 
 # Function to extract the most common location from text
 def extract_most_common_location(text):
-    # Check if the text contains "(Reuters)"
-    if "(Reuters)" in text:
-        # Start the text just after "(Reuters)"
-        text = text.split("(Reuters)", 1)[1]
+
     doc = nlp(text)
     locations = [ent.text for ent in doc.ents if ent.label_ == "GPE"]
-    locations = ["United States" if loc == "U.S." else loc for loc in locations]
+    locations = ["United States" if "U.S" in loc or "America" in loc or "States" in loc or "US" in loc else loc for loc in locations]
+
     if locations:
-        most_common_location = Counter(locations).most_common(1)[0][0]
-        return most_common_location
-    return None
+        location_counts = Counter(locations)
+        most_common_location = location_counts.most_common(1)[0][0]
+        if "@" in most_common_location:
+            return "No location"
+        if most_common_location == "United States":
+            if len(location_counts) > 1:
+                # If there are other locations, take the second most common one
+                most_common_location = location_counts.most_common(2)[1][0]
+            else:
+                # If no other locations are available, keep "United States"
+                return most_common_location
+
+        return  most_common_location
+
+    return "No location"
 
 # Apply function to text column of the first 10 rows
 df_test['location'] = df_test['text'].apply(extract_most_common_location)
 
 # Function to find geocode with caching
 def find_Geocode(location, geolocator, cache):
+    if location == "No location":
+        return 0, 0
+
     if location in cache:
         return cache[location]
     try:
@@ -41,7 +54,7 @@ def find_Geocode(location, geolocator, cache):
     except GeocoderTimedOut:
         return None
     cache[location] = (np.nan, np.nan)
-    return np.nan, np.nan
+    return 0, 0
 
 # Initialize geocoder and cache
 geolocator = Nominatim(user_agent="Yuval", timeout=10)
@@ -51,14 +64,13 @@ cache = {}
 latitude = []
 longitude = []
 
-for location in df_test["location"]:
-    if location is None:
-        latitude.append("")
-        longitude.append("")
-    else:
-        lat, lon = find_Geocode(location, geolocator, cache)
-        latitude.append(lat)
-        longitude.append(lon)
+for i, location in enumerate(df_test["location"]):
+    lat, lon = find_Geocode(location, geolocator, cache)
+    if lat == 0 or lon == 0:
+        # Update the location in the DataFrame if geocoding fails
+        df_test.at[i, "location"] = "No location"
+    latitude.append(lat)
+    longitude.append(lon)
 
 # Add lat, long to dataframe
 df_test["Latitude"] = latitude
