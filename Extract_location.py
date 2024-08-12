@@ -12,21 +12,23 @@ df_test = pd.read_csv(dataset_path)
 # Load spaCy model
 nlp = spacy.load("en_core_web_trf")
 
+United_states_synonyms = ["U.S","America","States","US"]
+
 # Function to extract the most common location from text
 def extract_most_common_location(text):
 
     doc = nlp(text)
     locations = [ent.text for ent in doc.ents if ent.label_ == "GPE"]
-    locations = ["United States" if "U.S" in loc or "America" in loc or "States" in loc or "US" in loc else loc for loc in locations]
+    locations = ["United States" if loc in United_states_synonyms else loc for loc in locations]
 
     if locations:
         location_counts = Counter(locations)
         most_common_location = location_counts.most_common(1)[0][0]
         if "@" in most_common_location:
             return "No location"
+        # if most common location is "United States" - take the second most common if there is one
         if most_common_location == "United States":
             if len(location_counts) > 1:
-                # If there are other locations, take the second most common one
                 most_common_location = location_counts.most_common(2)[1][0]
             else:
                 # If no other locations are available, keep "United States"
