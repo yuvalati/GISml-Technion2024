@@ -12,7 +12,7 @@ df_test = pd.read_csv(dataset_path)
 # Load spaCy model
 nlp = spacy.load("en_core_web_trf")
 
-United_states_synonyms = ["U.S","America","States","US"]
+United_states_synonyms = ["U.S","America","States","US","U.S.","the United States"]
 
 # Function to extract the most common location from text
 def extract_most_common_location(text):
