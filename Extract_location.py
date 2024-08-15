@@ -34,7 +34,7 @@ def extract_most_common_location(text):
                 # If no other locations are available, keep "United States"
                 return most_common_location
 
-        return  most_common_location
+        return most_common_location
 
     return "No location"
 
