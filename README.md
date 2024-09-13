@@ -4,12 +4,12 @@
 
 ## Project Summary
 
-This project aims to develop a comprehensive machine learning system for detecting fake news, with an additional focus on incorporating geographical context. The project goes beyond standard text-based fake news detection by introducing a second model that evaluates the geographical distribution of the news. This allows for enhanced analysis by visualizing the locations where fake or real news is most prevalent, providing a spatial layer to disinformation detection.
+This project aims to develop a machine learning system for detecting fake news, with an additional focus on on the geographical context of it. The project combines the fake news detection with a second model that evaluates the geographical distribution of the news. This allows for better analysis by visualizing the locations where fake or real news is most common, providing a spatial layer to fake news detection.
 
 ## Objectives
 
-- **Detect Fake News**: Build a primary model that predicts whether a news article is real or fake using textual features.
-- **Evaluate Geographical Context**: Implement a secondary model that evaluates the location information of the news, further enhancing the fake news detection.
+- **Detect Fake News**: Build a primary model that predicts whether a news article is real or fake using common textual features of fake news .
+- **Evaluate Geographical Context**: Implement a secondary model that evaluates the location information of the news.
 - **Visualize on Map**: Present the locations of the predicted fake and real news articles on a map for a geographical analysis of disinformation trends.
 - **Assess Impact**: Examine how geographical patterns can indicate clusters of disinformation and provide insights into localized disinformation campaigns.
 
