@@ -1,5 +1,3 @@
-# GISml-Technion2024
-
 # Fake News Detection with Geographical Context
 
 ## Project Summary
@@ -15,37 +13,38 @@ This project aims to develop a machine learning system for detecting fake news, 
 
 ## Key Features
 
-- **Text-Based Detection**: Leverage natural language processing (NLP) techniques such as TF-IDF, word embeddings, and sentiment analysis to classify news articles.
-- **Geographical Modeling**: After the fake news prediction, a secondary model analyzes the news' origin and referenced locations to uncover geographical patterns.
-- **Visualization**: The final output includes a map-based visualization, where the locations of predicted fake and real news are displayed, allowing users to see the geographical distribution and potential hotspots for disinformation.
+- **Text-Based Detection**: natural language processing (NLP) techniques.
+- **Geographical Modeling**: After the fake news prediction, a secondary model analyzes the news' origin and referenced locations to detect geographical patterns.
+- **Visualization**: The final output includes a map-based visualization, where the locations of predicted fake and real news are displayed, allowing users to see the geographical distribution and potential hotspots for fake/real news.
   
 ## Dataset
 
-- **News Dataset**: Includes a collection of news articles labeled as real or fake.
+- **News Dataset**: Includes a collection of two datsets where one if real new and the other is fake news, with approximatly 20,000 articles in each one of them.
 - **Geographical Data**: The dataset also includes the source location of the news articles as well as any geographical references made within the articles.
 
 ## Project Workflow
+1. **Merging the two datasets into one**:
+   - Producing one dataset which consists of all the rows from the datasets, adding a new column for label - 0 for fake news, 1 for real news. 
 
-1. **Fake News Detection**:
+2. **Fake News Detection**:
    - The first model classifies news articles as real or fake based on textual data.
   
-2. **Geographical Analysis**:
+3. **Geographical Analysis**:
    - A secondary model evaluates the geographical context by analyzing where the news originates and what locations are mentioned within the articles.
   
-3. **Map Visualization**:
+4. **Map Visualization**:
    - The output of both models is visualized on a map, highlighting the locations of the predicted fake and real news, offering a spatial understanding of disinformation.
 
 ## Project Structure
 
 ```plaintext
-├── data/                   # Contains datasets used for training and testing
-├── notebooks/              # Jupyter notebooks used for data exploration and model development
-├── src/                    # Source code for data preprocessing, feature extraction, and model training
+├── data_links.md/          # Contains datasets
+├── notebooks/              # Jupyter notebooks
+├── src/                    # Source codes 
 │   ├── data_preprocessing.py
 │   ├── feature_extraction.py
 │   ├── model_training.py
-│   ├── geo_model.py        # Evaluates geographical data for fake news detection
+│   ├── geo_model.py        # Evaluates geo-location
 │   ├── map_visualization.py # Visualizes results on a map
 ├── models/                 # Saved models for prediction and evaluation
 ├── README.md               # Project overview and documentation
-└── requirements.txt        # Python package dependencies
