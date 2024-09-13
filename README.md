@@ -41,10 +41,10 @@ This project aims to develop a machine learning system for detecting fake news, 
 ├── data_links.md/          # Contains datasets
 ├── notebooks/              # Jupyter notebooks
 ├── src/                    # Source codes 
-│   ├── data_preprocessing.py
-│   ├── feature_extraction.py
-│   ├── model_training.py
-│   ├── geo_model.py        # Evaluates geo-location
-│   ├── map_visualization.py # Visualizes results on a map
+│   ├── Merging_Real&Fake.py
+│   ├── RealorFake.py
+│   ├── PrimaryRealorFake.py
+│   ├── Extract_location.py        
+│   ├── map_visualization.py # Visualizes results on a map 
 ├── models/                 # Saved models for prediction and evaluation
 ├── README.md               # Project overview and documentation
