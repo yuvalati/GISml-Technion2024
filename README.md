@@ -24,14 +24,14 @@ This project aims to develop a machine learning system for detecting fake news, 
 
 ## Project Workflow
 1. **Merging the two datasets into one**:
-   - Producing one dataset which consists of all the rows from the datasets, adding a new column for label - 0 for fake news, 1 for real news. 
+   - Producing one dataset which consists of all the rows from the datasets, adding a new column for label - 0 for fake news, 1 for real news.
 
-2. **Fake News Detection**:
-   - The first model classifies news articles as real or fake based on textual data.
-  
-3. **Geographical Analysis**:
-   - A secondary model evaluates the geographical context by analyzing where the news originates and what locations are mentioned within the articles.
-  
+2. **Geographical Analysis**:
+   - The first model evaluates the geographical context by analyzing where the news originates and what locations are mentioned within the articles.
+
+3. **Fake News Detection**:
+   - A secondary model classifies news articles as real or fake based on textual data.
+    
 4. **Map Visualization**:
    - The output of both models is visualized on a map, highlighting the locations of the predicted fake and real news, offering a spatial understanding of disinformation.
 
