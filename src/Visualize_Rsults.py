@@ -3,7 +3,7 @@ import folium
 from folium.plugins import HeatMap
 
 # Load your CSV with the geocoded data (Combined_with_lat_long.csv)
-df = pd.read_csv('Combined_with_lat_long.csv')
+df = pd.read_csv('1000_rows_with_lat_long_2.csv')
 
 # Initialize a base map
 m = folium.Map(location=[20, 0], zoom_start=2)  # You can center the map according to your data
