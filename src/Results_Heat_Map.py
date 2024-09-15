@@ -6,6 +6,7 @@ import numpy as np  # Import numpy for log scaling
 # Load the summary CSV (assuming it's already saved from the previous steps)
 data = pd.read_csv("location_summary.csv")
 
+
 # Function to normalize Real-% to a color between red (0%) and green (100%)
 def get_color(real_percent):
     # Create a color map that transitions from red to green
@@ -13,6 +14,7 @@ def get_color(real_percent):
     # Normalize the percentage value (0 to 1 scale)
     normalized_value = real_percent / 100
     return mcolors.to_hex(cmap(normalized_value))
+
 
 # Group by Latitude and Longitude, and keep only the entry with the highest Total for each unique location
 data = data.sort_values('Total', ascending=False).drop_duplicates(subset=['Latitude', 'Longitude'], keep='first')
@@ -33,11 +35,11 @@ for index, row in data.iterrows():
     # Add a circle marker for each location
     folium.CircleMarker(
         location=(row['Latitude'], row['Longitude']),
-        radius=size,               # Log-scaled size for the circles
-        color=None,                # No border color
+        radius=size,  # Log-scaled size for the circles
+        color=None,  # No border color
         fill=True,
-        fill_color=color,          # Fill color
-        fill_opacity=opacity,      # Transparency based on Total
+        fill_color=color,  # Fill color
+        fill_opacity=opacity,  # Transparency based on Total
         popup=f"Location: {row['location']}. Total news: {row['Total']}, {row['Real-%']}% Real"
     ).add_to(mymap)
 
