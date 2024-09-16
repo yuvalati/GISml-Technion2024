@@ -1,4 +1,5 @@
 import pandas as pd
+import time
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import Pipeline
@@ -12,8 +13,31 @@ import matplotlib.pyplot as plt
 import logging
 
 # Step 1: Load the dataset directly
-df = pd.read_csv('combined.csv')  # Adjust with your actual file path
+print("Insert file path:")
+df = pd.read_csv(input())
 
+create_sample = input("Create sample? (y/n): ")
+
+if create_sample == 'y':
+    print("Creating sample...")
+    # Take a random sample of 1000 rows
+    sample_df = df.sample(n=1000, random_state=42)  # random_state ensures reproducibility
+
+    # Check the sample
+    print(f"{sample_df.head()}\n")
+
+    # Prompt the user to choose between the full dataset or the sample
+    choice = input("Choose dataset to use (Enter '1' for full dataset, '2' for sample dataset): ")
+
+    # Use the chosen dataset
+    if choice == '1':
+        print("Full dataset chosen")
+    elif choice == '2':
+        df = sample_df
+        print("Sample dataset chosen")
+    else:
+        df = sample_df
+        print("Invalid choice, using sample dataset by default.")
 
 # Step 2: Preprocess the data
 def preprocess_data(df):
@@ -80,6 +104,9 @@ optuna.logging.set_verbosity(optuna.logging.WARNING)  # Suppress unnecessary Opt
 
 n_trials = 10  # Define the number of trials you want to run
 
+# Start timer
+start_time = time.time()  # Record the start time
+
 # Wrapping Optuna's `optimize` function inside a single tqdm progress bar
 with tqdm(total=n_trials, desc="Optimization progress", unit="trial") as pbar:
     def objective_with_progress(trial):
@@ -93,9 +120,14 @@ with tqdm(total=n_trials, desc="Optimization progress", unit="trial") as pbar:
 
 # Step 7: Best parameters and accuracy
 print(f'Best trial: {study.best_trial.params}')
-print(f'Best accuracy: {study.best_value}')
+print(f'Best accuracy: {study.best_value:.3f}')
 
-# Step 8: Plotting the error across trials
+# Step 8: Print the time it took
+end_time = time.time()  # Record the end time
+elapsed_time = end_time - start_time
+print(f'Time taken: {elapsed_time:.3f} seconds')
+
+# Step 9: Plotting the error across trials
 plt.figure(figsize=(10, 6))
 plt.plot(range(1, len(errors) + 1), errors, marker='o', linestyle='-', color='b')
 plt.title('Error over Trials')
