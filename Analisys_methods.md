@@ -39,10 +39,19 @@ This section explains the techniques and tools used to analyze, optimize, and ev
 
 ### 3. **Evaluation Metrics**
 
-the model is evaluated using the next metrics:
+the model is evaluated using the following metrics:
   - **Accuracy**: Measures the percentage of correctly classified news articles (real vs fake).
   - **Loss**: Provides a detailed measure of how confident the model is in its predictions by evaluating the difference between the predicted probabilities and actual labels.
-  - **Precision**: dfdfgdfg.
-  - **Recall**: dfdgdfgdfg.
+  - **Precision**: Precision measures the accuracy of positive predictions, i.e., the proportion of predicted positives (True Positives) that are actual positives.
+                   Formula - Precision = (True Positives) / (True Positives + False Positives).
+  - **Recall**: Recall, also known as Sensitivity or True Positive Rate, measures the ability of the model to correctly identify actual positives, i.e., how many of the actual positive cases were correctly predicted.
+                Formula - Recall = (True Positives) / (True Positives + False Negatives).
+  - **f1 score**: The f1 score is the harmonic mean of Precision and Recall. It provides a single metric that balances both precision and recall.
+                  Formula - f1 = 2 x (Precision x Recall) / (Precision + Recall) .
+    
+    **Explanation**: In our case we try to classify news articles as real or fake. Precision ensures we are accurately marking fake news as fake, without wrongly labeling real news as fake.
+                     High precision means fewer legitimate articles are falsely flagged as fake. Recall ensures you are catching as many fake news articles as possible, minimizing the chance that fake articles are                              classified as real.
+                     High recall means you're detecting most of the fake news, even if some real articles are occasionally mislabeled. The f1 score balances both objectives, ensuring the system is both good at catching                         fake news (recall) and at not mislabeling real news (precision).
+                     A high f1 score indicates strong overall performance in detecting fake news accurately.
   
 By using **Optuna** and **MLflow**, the model in this project is optimized efficiently, and its performance is carefully tracked and evaluated to ensure the highest accuracy and reliability in detecting fake news.
