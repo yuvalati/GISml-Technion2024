@@ -3,7 +3,7 @@ import time
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.ensemble import RandomForestClassifier
 import optuna
 import mlflow
@@ -31,13 +31,13 @@ if create_sample == 'y':
 
     # Use the chosen dataset
     if choice == '1':
-        print("Full dataset chosen")
+        print("Full dataset chosen\n")
     elif choice == '2':
         df = sample_df
-        print("Sample dataset chosen")
+        print("Sample dataset chosen\n")
     else:
         df = sample_df
-        print("Invalid choice, using sample dataset by default.")
+        print("Invalid choice, using sample dataset by default.\n")
 
 # Step 2: Preprocess the data
 def preprocess_data(df):
@@ -87,6 +87,11 @@ def objective(trial):
     error = 1 - accuracy
     errors.append(error)  # Track error for plotting
 
+    # Calculate precision, recall, and F1 score
+    precision = precision_score(y_test, y_pred, average='binary')
+    recall = recall_score(y_test, y_pred, average='binary')
+    f1 = f1_score(y_test, y_pred, average='binary')
+
     # Logging results with MLflow
     mlflow.log_param('n_estimators', n_estimators)
     mlflow.log_param('max_depth', max_depth)
@@ -102,7 +107,8 @@ def objective(trial):
 # Step 6: Suppress Optuna's logging output and set a single TQDM progress bar
 optuna.logging.set_verbosity(optuna.logging.WARNING)  # Suppress unnecessary Optuna logs
 
-n_trials = 10  # Define the number of trials you want to run
+print("Define the number of trials desired in the model:")
+n_trials = int(input())
 
 # Start timer
 start_time = time.time()  # Record the start time
@@ -121,6 +127,14 @@ with tqdm(total=n_trials, desc="Optimization progress", unit="trial") as pbar:
 # Step 7: Best parameters and accuracy
 print(f'Best trial: {study.best_trial.params}')
 print(f'Best accuracy: {study.best_value:.3f}')
+
+# To do (--> intentionally written wrong to enable commiting and pushing before finishing the task):
+# fix add and display the results for precision recall and f1 score for the best trial;
+# Step 7 (continued): Display precision, recall, and F1 score for the best trial
+# best_accuracy, best_precision, best_recall, best_f1 = objective(study.best_trial)
+# print(f'Precision: {best_precision:.3f}')
+# print(f'Recall: {best_recall:.3f}')
+# print(f'F1 Score: {best_f1:.3f}')
 
 # Step 8: Print the time it took
 end_time = time.time()  # Record the end time
