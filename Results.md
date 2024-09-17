@@ -10,7 +10,7 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 - **Best Accuracy**: 99.3%
 - **Time Taken**: 5 minutes
 
-![10 Trials - Accuracy over Time](path_to_graph_10_trials.png)
+![10 Trials - Accuracy over Time]("C:\Users\iliav\Downloads\Screenshot 2024-09-17 at 19.33.29.png")
 
 ---
 
