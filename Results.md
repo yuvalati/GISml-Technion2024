@@ -9,8 +9,10 @@ This document presents the results of running **Optuna** for hyperparameter tuni
   - `min_samples_split`: 16
 - **Best Accuracy**: 99.3%
 - **Time Taken**: 5 minutes
+- 
 
-![10 Trials - Accuracy over Time]("C:\Users\iliav\Downloads\Screenshot 2024-09-17 at 19.33.29.png")
+
+![10 Trials - Accuracy over Time](![Screenshot 2024-09-17 at 19 33 29](https://github.com/user-attachments/assets/5a16d931-8ffd-48ac-bec2-eef093a58f1f))
 
 ---
 
