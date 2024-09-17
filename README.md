@@ -45,6 +45,9 @@ This project aims to develop a machine learning system for detecting fake news, 
 │   ├── RealorFake.py
 │   ├── PrimaryRealorFake.py
 │   ├── Extract_location.py        
-│   ├── map_visualization.py # Visualizes results on a map 
-├── models/                 # Saved models for prediction and evaluation
-├── README.md               # Project overview and documentation
+│   ├── Visualize_results.py
+    ├── Results_Heat_Map.py 
+├── models/                # Saved models for prediction and evaluation
+├── README.md              # Project overview and documentation
+├── Analisys_Methods.md/   # metrics explaination
+├── Results.md/            # presenting 5 sample runs
