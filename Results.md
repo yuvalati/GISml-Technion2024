@@ -44,13 +44,14 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 ### Run 4: **40 Trials**
 
 - **Best Hyperparameters**:
-  - `n_estimators`: 105
+  - `n_estimators`: 269
   - `max_depth`: 19
-  - `min_samples_split`: 16
-- **Best Accuracy**: 99.5%
+  - `min_samples_split`: 13
+- **Best Accuracy**: 99.2%
 - **Time Taken**: 12 minutes
 
-![40 Trials - Accuracy over Time](path_to_graph_40_trials.png)
+![Screenshot 2024-09-17 at 20 22 35](https://github.com/user-attachments/assets/57f5848c-d024-4e53-a08a-be749631bd66)
+
 
 ---
 
