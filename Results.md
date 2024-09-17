@@ -4,11 +4,11 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 ### Run 1: **10 Trials**
 
 - **Best Hyperparameters**:
-  - `n_estimators`: 74
-  - `max_depth`: 20
-  - `min_samples_split`: 16
-- **Best Accuracy**: 99.3%
-- **Time Taken**: 5 minutes
+  - `n_estimators`: 58
+  - `max_depth`: 18
+  - `min_samples_split`: 6
+- **Best Accuracy**: 98.9%
+- **Time Taken**: 2.5 minutes
 - 
 
 
@@ -19,13 +19,13 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 ### Run 2: **20 Trials**
 
 - **Best Hyperparameters**:
-  - `n_estimators`: 88
-  - `max_depth`: 15
-  - `min_samples_split`: 12
-- **Best Accuracy**: 99.2%
-- **Time Taken**: 7 minutes
+  - `n_estimators`: 74
+  - `max_depth`: 20
+  - `min_samples_split`: 16
+- **Best Accuracy**: 99.3%
+- **Time Taken**: 6 minutes
 
-![20 Trials - Accuracy over Time](path_to_graph_20_trials.png)
+![Screenshot 2024-09-17 at 18 44 33](https://github.com/user-attachments/assets/d9b7fd64-c631-4f26-b551-c19342db0115)
 
 ---
 
@@ -39,7 +39,7 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 - **Time Taken**: 10 minutes
 
 
-![Screenshot 2024-09-17 at 18 44 33](https://github.com/user-attachments/assets/d9b7fd64-c631-4f26-b551-c19342db0115)
+
 
 ---
 
