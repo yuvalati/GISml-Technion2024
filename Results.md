@@ -9,7 +9,6 @@ This document presents the results of running **Optuna** for hyperparameter tuni
   - `min_samples_split`: 6
 - **Best Accuracy**: 98.9%
 - **Time Taken**: 2.5 minutes
-- 
 
 
 ![Screenshot 2024-09-17 at 19 33 29](https://github.com/user-attachments/assets/5a16d931-8ffd-48ac-bec2-eef093a58f1f)
