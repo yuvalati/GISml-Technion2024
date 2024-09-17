@@ -9,9 +9,9 @@ This section explains the techniques and tools used to analyze, optimize, and ev
 #### Key Steps:
 - **Objective Function**: An objective function is defined that combines the model training process and the evaluation metric.
 - **Search Space Definition**: Optuna searches over a defined range of hyperparameters, including:
-  - Number of estimators (for ensemble models like Random Forest)
-  - Maximum tree depth
-  - Minimum samples required to split a node
+  - Number of estimators - For models like Random Forest, this determine the number of decision trees within the model of RF.
+  - Maximum tree depth - Defines the maximum possible depth, that each decision tree can contain.
+  - Minimum samples required to split a node - A threshold value that defines the minimum samples required for a node in the decision tree before being splitted.
 - **Optimization Process**: Optuna uses several techniques to efficiently search through hyperparameters and find the best combination that minimizes the loss function.
 - **Results**: The best hyperparameters are saved and used for further model evaluation.
 
@@ -42,5 +42,7 @@ This section explains the techniques and tools used to analyze, optimize, and ev
 the model is evaluated using the next metrics:
   - **Accuracy**: Measures the percentage of correctly classified news articles (real vs fake).
   - **Loss**: Provides a detailed measure of how confident the model is in its predictions by evaluating the difference between the predicted probabilities and actual labels.
+  - **Precision**: dfdfgdfg.
+  - **Recall**: dfdgdfgdfg.
   
-By using **Optuna** and **MLflow**, the model in this project is optimized efficiently, and its performance is carefully tracked and evaluated to ensure the highest accuracy and reliability in detecting fake news..
+By using **Optuna** and **MLflow**, the model in this project is optimized efficiently, and its performance is carefully tracked and evaluated to ensure the highest accuracy and reliability in detecting fake news.
