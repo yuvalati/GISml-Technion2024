@@ -10,8 +10,8 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 - **Best Accuracy**: 98.9%
 - **Time Taken**: 2.5 minutes
 
+![plot1-10trials](https://github.com/user-attachments/assets/00c30391-9363-4432-8595-0a168457da6c)
 
-![Screenshot 2024-09-17 at 19 33 29](https://github.com/user-attachments/assets/5a16d931-8ffd-48ac-bec2-eef093a58f1f)
 
 ---
 
@@ -37,8 +37,7 @@ This document presents the results of running **Optuna** for hyperparameter tuni
 - **Best Accuracy**: 99.4%
 - **Time Taken**: 10 minutes
 
-
-
+![plot2-30trials](https://github.com/user-attachments/assets/945346b1-4016-406a-a73d-bdd0d58dff3f)
 
 ---
 
