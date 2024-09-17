@@ -18,6 +18,8 @@ This section explains the techniques and tools used to analyze, optimize, and ev
 **Benefits**:
 - Efficiently searches the hyperparameter space to avoid overfitting and improve model performance.
 - Tracks and logs all the hyperparameter trials, making it easier to review the results.
+  
+**Explanation**: In number of estimators, higher number of trees gives the model more flexibility, but it can also increase the training time. in maximum tree depth, A higher depth can lead to overfitting, while a lower depth might underfit. in minimum samples required to split a node,  A higher value of  helps reduce overfitting by limiting the complexity of the model.
 
 ### 2. **Experiment Tracking with MLflow**
 
