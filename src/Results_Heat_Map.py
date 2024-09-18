@@ -23,25 +23,28 @@ mymap = folium.Map(location=[0, 0], zoom_start=2)
 
 # Add circles to the map for each location
 for index, row in data.iterrows():
-    # Get color based on Real-% (0% is red, 100% is green)
-    color = get_color(row['Real-%'])
 
-    # Apply logarithmic scaling to the circle size
-    size = np.log(row['Total'] + 1) * 3  # Log scale with a constant multiplier for visibility
+    if row['location'] != "No location":
 
-    # Set the opacity
-    opacity = 0.5
+        # Get color based on Real-% (0% is red, 100% is green)
+        color = get_color(row['Real-%'])
 
-    # Add a circle marker for each location
-    folium.CircleMarker(
-        location=(row['Latitude'], row['Longitude']),
-        radius=size,  # Log-scaled size for the circles
-        color=None,  # No border color
-        fill=True,
-        fill_color=color,  # Fill color
-        fill_opacity=opacity,
-        popup=f"Location: {row['location']}. Total news: {row['Total']}, {row['Real-%']}% Real"
-    ).add_to(mymap)
+        # Apply logarithmic scaling to the circle size
+        size = np.log(row['Total'] + 1) * 3  # Log scale with a constant multiplier for visibility
+
+        # Set the opacity
+        opacity = 0.5
+
+        # Add a circle marker for each location
+        folium.CircleMarker(
+            location=(row['Latitude'], row['Longitude']),
+            radius=size,  # Log-scaled size for the circles
+            color=None,  # No border color
+            fill=True,
+            fill_color=color,  # Fill color
+            fill_opacity=opacity,
+            popup=f"Location: {row['location']}. Total news: {row['Total']}, {row['Real-%']}% Real"
+        ).add_to(mymap)
 
 # Save the heatmap to an HTML file
 mymap.save("heatmap_location_summary.html")
