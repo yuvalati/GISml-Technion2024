@@ -1,9 +1,9 @@
 import pandas as pd
 import folium
 import matplotlib.colors as mcolors
-import numpy as np  # Import numpy for log scaling
+import numpy as np
 
-# Load the summary CSV (assuming it's already saved from the previous steps)
+# Load the summary CSV
 data = pd.read_csv("location_summary.csv")
 
 
@@ -16,7 +16,7 @@ def get_color(real_percent):
     return mcolors.to_hex(cmap(normalized_value))
 
 
-# Group by Latitude and Longitude, and keep only the entry with the highest Total for each unique location
+# keep only the entry with the highest Total for each unique location, so the locations will not be on top of each other
 data = data.sort_values('Total', ascending=False).drop_duplicates(subset=['Latitude', 'Longitude'], keep='first')
 
 mymap = folium.Map(location=[0, 0], zoom_start=2)
@@ -39,7 +39,7 @@ for index, row in data.iterrows():
         color=None,  # No border color
         fill=True,
         fill_color=color,  # Fill color
-        fill_opacity=opacity,  # Transparency based on Total
+        fill_opacity=opacity,
         popup=f"Location: {row['location']}. Total news: {row['Total']}, {row['Real-%']}% Real"
     ).add_to(mymap)
 
