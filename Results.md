@@ -9,7 +9,7 @@ The table below compares the results of running Optuna for hyperparameter tuning
 | **min_samples_split**  | 11                | 16                | 14                | 13                | 13                |
 | **Best Accuracy**      | 99.0%             | 99.3%             | 99.4%             | 99.2%             | 99.2%             |
 | **Log Loss**    ????   | 0.09              | 0.12              | 0.07              | 0.05              | 0.04              |
-| **Training Time (sec)**| 364.93            | 420               | 600               | 720               | 900               |
+| **Training Time (sec)**| 364.9            | 420               | 600               | 720               | 900               |
 | **Precision**          | 0.986             | 0.97              | 0.99              | 0.99              | 0.99              |
 | **Recall**             | 0.993             | 0.96              | 0.98              | 0.98              | 0.99              |
 | **f1 Score**           | 0.99              | 0.993             | 0.997             | 0.998             | 0.999             |
