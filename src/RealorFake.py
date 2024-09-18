@@ -45,7 +45,6 @@ def preprocess_data(df):
     y = df['label']  # Use 'label' column for the target (fake/real)
     return train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-
 # Step 3: Preprocess the dataset
 X_train, X_test, y_train, y_test = preprocess_data(df)
 
@@ -55,6 +54,8 @@ vectorizer = TfidfVectorizer(max_features=10000, stop_words='english')
 # To track error rates for plotting
 errors = []
 
+# To store the best metrics
+best_metrics = {"accuracy": 0, "precision": 0, "recall": 0, "f1": 0}
 
 # Step 5: Model training and hyperparameter optimization function
 def objective(trial):
@@ -97,9 +98,16 @@ def objective(trial):
     mlflow.log_param('max_depth', max_depth)
     mlflow.log_param('min_samples_split', min_samples_split)
     mlflow.log_metric('accuracy', accuracy)
+    mlflow.log_metric('precision', precision)
+    mlflow.log_metric('recall', recall)
+    mlflow.log_metric('f1', f1)
 
     mlflow.sklearn.log_model(pipeline, 'model')
     mlflow.end_run()
+
+    # Store the best metrics (no retraining)
+    if accuracy > best_metrics["accuracy"]:
+        best_metrics.update({"accuracy": accuracy, "precision": precision, "recall": recall, "f1": f1})
 
     return accuracy
 
@@ -113,28 +121,24 @@ n_trials = int(input())
 # Start timer
 start_time = time.time()  # Record the start time
 
-# Wrapping Optuna's `optimize` function inside a single tqdm progress bar
+# Wrapping Optuna's optimize function inside a single tqdm progress bar
 with tqdm(total=n_trials, desc="Optimization progress", unit="trial") as pbar:
     def objective_with_progress(trial):
         accuracy = objective(trial)  # Run the original objective function
         pbar.update(1)  # Update the progress bar after each trial
         return accuracy
 
-
     study = optuna.create_study(direction='maximize')
     study.optimize(objective_with_progress, n_trials=n_trials)
 
 # Step 7: Best parameters and accuracy
 print(f'Best trial: {study.best_trial.params}')
-print(f'Best accuracy: {study.best_value:.3f}')
+print(f'Best accuracy: {best_metrics["accuracy"]:.3f}')
 
-# To do (--> intentionally written wrong to enable commiting and pushing before finishing the task):
-# fix add and display the results for precision recall and f1 score for the best trial;
 # Step 7 (continued): Display precision, recall, and F1 score for the best trial
-# best_accuracy, best_precision, best_recall, best_f1 = objective(study.best_trial)
-# print(f'Precision: {best_precision:.3f}')
-# print(f'Recall: {best_recall:.3f}')
-# print(f'F1 Score: {best_f1:.3f}')
+print(f'Precision: {best_metrics["precision"]:.3f}')
+print(f'Recall: {best_metrics["recall"]:.3f}')
+print(f'F1 Score: {best_metrics["f1"]:.3f}')
 
 # Step 8: Print the time it took
 end_time = time.time()  # Record the end time
