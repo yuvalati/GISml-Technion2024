@@ -34,7 +34,8 @@ This project aims to develop a machine learning system for detecting fake news, 
     
 4. **Map Visualization**:
    - The output of both models is visualized on a map, highlighting the locations of the predicted fake and real news, offering a spatial understanding of disinformation.
-     <img width="1452" alt="Screenshot 2024-09-18 at 19 07 16" src="https://github.com/user-attachments/assets/b8a98d27-ed3e-4e7f-92db-bca7e54da33d">
+     <img width="776" alt="image" src="https://github.com/user-attachments/assets/418ea386-136d-487e-946c-ac0732c00dde">
+
 
 
 ## Project Structure
