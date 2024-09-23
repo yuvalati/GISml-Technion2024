@@ -138,7 +138,7 @@ print(f'Best accuracy: {best_metrics["accuracy"]:.3f}')
 # Step 7 (continued): Display precision, recall, and F1 score for the best trial
 print(f'Precision: {best_metrics["precision"]:.3f}')
 print(f'Recall: {best_metrics["recall"]:.3f}')
-print(f'F1 Score: {best_metrics["f1"]:.3f}')
+print(f'f1 Score: {best_metrics["f1"]:.3f}')
 
 # Step 8: Print the time it took
 end_time = time.time()  # Record the end time
